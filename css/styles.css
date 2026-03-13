@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-content h1 {
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+}
+
+.header-content p {
+    font-size: 1.1rem;
+    opacity: 0.85;
+}
+
+/* Main */
+main {
+    flex: 1;
+    padding: 2rem 1rem;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Song List */
+.song-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.song-item {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.song-item:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.song-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+}
+
+.song-header:hover {
+    background: #f7f9fc;
+}
+
+.song-header .song-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.song-header .song-number {
+    background: #3498db;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-right: 0.8rem;
+    flex-shrink: 0;
+}
+
+.song-header .song-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.song-header .arrow {
+    font-size: 1.2rem;
+    color: #999;
+    transition: transform 0.3s;
+}
+
+.song-item.open .song-header .arrow {
+    transform: rotate(180deg);
+}
+
+/* Voices submenu */
+.voices-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    background: #f7f9fc;
+}
+
+.song-item.open .voices-menu {
+    max-height: 1200px;
+}
+
+.voices-menu ul {
+    list-style: none;
+    padding: 0.5rem 1.2rem 1rem 1.2rem;
+}
+
+.voices-menu li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #e8ecf1;
+}
+
+.voices-menu li:last-child {
+    border-bottom: none;
+}
+
+/* Voice actions (play + download) */
+.voice-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.play-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #e67e22;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.play-btn:hover {
+    background: #d35400;
+    transform: scale(1.08);
+}
+
+a.view-btn {
+    background: #27ae60;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+a.view-btn:hover {
+    background: #219a52;
+}
+
+/* Audio player row */
+.audio-player-row {
+    padding: 0.3rem 0 0.6rem 0;
+    border-bottom: 1px solid #e8ecf1;
+}
+
+.audio-player-row audio {
+    width: 100%;
+}
+
+.audio-player-row.hidden {
+    display: none;
+}
+
+.voice-info {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.voice-icon {
+    font-size: 1.3rem;
+}
+
+.voice-name {
+    font-weight: 500;
+    color: #444;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #3498db;
+    color: white;
+    padding: 0.45rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.download-btn:hover {
+    background: #2980b9;
+    transform: scale(1.03);
+}
+
+.download-btn.partitura-btn {
+    background: #27ae60;
+}
+
+.download-btn.partitura-btn:hover {
+    background: #219a52;
+}
+
+.download-btn .btn-icon {
+    font-size: 1rem;
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .header-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .song-header {
+        padding: 0.8rem 1rem;
+    }
+
+    .download-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
