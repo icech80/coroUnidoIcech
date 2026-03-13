@@ -107,3 +107,24 @@ Luego abrir en el navegador: **http://localhost:8080**
 - HTML5
 - CSS3
 - JavaScript (vanilla, sin dependencias externas)
+
+---
+
+## Despliegue
+
+La app está publicada con GitHub Pages:
+
+- **Repositorio:** https://github.com/icech80/coroUnidoIcech
+- **URL pública:** https://icech80.github.io/coroUnidoIcech/
+
+### Publicar cambios
+
+Después de modificar cualquier archivo, ejecutar en la terminal dentro de la carpeta `APP/`:
+
+```bash
+git add -A
+git commit -m "Descripción del cambio"
+git push
+```
+
+GitHub Pages actualizará la página automáticamente en 1-2 minutos.
