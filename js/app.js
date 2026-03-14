@@ -1,17 +1,27 @@
 /**
  * Repertorio del Coro
  * 
- * Para agregar una canción nueva:
- * 1. Crea una carpeta dentro de "repetorio/" con el nombre de la canción.
- * 2. Coloca los archivos dentro de esa carpeta:
- *    - Soprano.mp4, Alto.mp4, Tenor.mpeg, Bajo.mpeg, Partitura.pdf
- * 3. Agrega un objeto al array "repertorio" abajo.
+ * Estructura de carpetas:
+ *   repetorio/
+ *     warmup/
+ *       [Nombre Canción]/
+ *         Soprano.mp4, Alto.mp4, Tenor.mpeg, Bajo.mpeg, Pista.mp3, Partitura.pdf
+ *     canciones/
+ *       [Nombre Canción]/
+ *         Soprano.mp4, Alto.mp4, Tenor.mpeg, Bajo.mpeg, Pista.mp3, Partitura.pdf
  * 
- * Ejemplo:
- *   { nombre: "Es Exaltado", carpeta: "Es Exaltado" }
+ * Para agregar una canción nueva:
+ * 1. Crea una carpeta dentro de "repetorio/warmup/" o "repetorio/canciones/".
+ * 2. Coloca los archivos de voces, pista y partitura dentro.
+ * 3. Agrega un objeto al array correspondiente abajo.
  */
 
-const repertorio = [
+const warmup = [
+    { nombre: "Amen", carpeta: "Amen", archivos: false },
+    { nombre: "Jubilate Deo", carpeta: "Jubilate deo", archivos: false },
+];
+
+const canciones = [
     { nombre: "Es Exaltado", carpeta: "Es Exaltado" },
 ];
 
@@ -23,9 +33,14 @@ const voces = [
 ];
 
 function crearListaCanciones() {
-    const container = document.getElementById("song-list");
+    renderCategoria(warmup, "warmup-list", "repetorio/warmup");
+    renderCategoria(canciones, "canciones-list", "repetorio/canciones");
+}
 
-    repertorio.forEach((cancion, index) => {
+function renderCategoria(lista, containerId, basePath) {
+    const container = document.getElementById(containerId);
+
+    lista.forEach((cancion, index) => {
         const songItem = document.createElement("div");
         songItem.className = "song-item";
 
@@ -57,11 +72,12 @@ function crearListaCanciones() {
 
         const ul = document.createElement("ul");
 
+        if (cancion.archivos !== false) {
         // Voces
         voces.forEach((voz) => {
             const li = document.createElement("li");
             li.className = "voice-item";
-            const rutaAudio = `repetorio/${encodeURIComponent(cancion.carpeta)}/${encodeURIComponent(voz.archivo)}`;
+            const rutaAudio = `${basePath}/${encodeURIComponent(cancion.carpeta)}/${encodeURIComponent(voz.archivo)}`;
             li.innerHTML = `
                 <div class="voice-info">
                     <span class="voice-icon">${voz.icono}</span>
@@ -100,9 +116,50 @@ function crearListaCanciones() {
             ul.appendChild(playerRow);
         });
 
+        // Pista (instrumental)
+        const rutaPista = `${basePath}/${encodeURIComponent(cancion.carpeta)}/Pista.mp3`;
+        const liPista = document.createElement("li");
+        liPista.className = "voice-item";
+        liPista.innerHTML = `
+            <div class="voice-info">
+                <span class="voice-icon">🎵</span>
+                <span class="voice-name">Pista</span>
+            </div>
+            <div class="voice-actions">
+                <button class="play-btn pista-btn" title="Reproducir Pista" data-src="${rutaPista}">
+                    &#9654;
+                </button>
+                <a href="${rutaPista}" download class="download-btn pista-download-btn" title="Descargar Pista">
+                    <span class="btn-icon">&#11015;</span> Descargar
+                </a>
+            </div>
+        `;
+
+        const pistaPlayerRow = document.createElement("li");
+        pistaPlayerRow.className = "audio-player-row hidden";
+        pistaPlayerRow.innerHTML = `<audio controls preload="none"><source src="${rutaPista}">Tu navegador no soporta audio.</audio>`;
+
+        const pistaPlayBtn = liPista.querySelector(".play-btn");
+        pistaPlayBtn.addEventListener("click", () => {
+            const audio = pistaPlayerRow.querySelector("audio");
+            const isVisible = !pistaPlayerRow.classList.contains("hidden");
+            if (isVisible) {
+                pistaPlayerRow.classList.add("hidden");
+                audio.pause();
+                pistaPlayBtn.innerHTML = "&#9654;";
+            } else {
+                pistaPlayerRow.classList.remove("hidden");
+                audio.play();
+                pistaPlayBtn.innerHTML = "&#9209;";
+            }
+        });
+
+        ul.appendChild(liPista);
+        ul.appendChild(pistaPlayerRow);
+
         // Partitura
         const liPartitura = document.createElement("li");
-        const rutaPartitura = `repetorio/${encodeURIComponent(cancion.carpeta)}/Partitura.pdf`;
+        const rutaPartitura = `${basePath}/${encodeURIComponent(cancion.carpeta)}/Partitura.pdf`;
         liPartitura.innerHTML = `
             <div class="voice-info">
                 <span class="voice-icon">📄</span>
@@ -118,6 +175,7 @@ function crearListaCanciones() {
             </div>
         `;
         ul.appendChild(liPartitura);
+        } // fin if archivos
 
         vocesMenu.appendChild(ul);
         songItem.appendChild(header);

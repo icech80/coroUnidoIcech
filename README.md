@@ -1,6 +1,6 @@
 # Coro Unido Echaurren 80 - Repertorio Musical
 
-Aplicación web para el coro de la iglesia donde los integrantes pueden consultar el repertorio, escuchar los audios de cada voz y descargar partituras y archivos de audio.
+Aplicación web para el coro de la iglesia donde los integrantes pueden consultar el repertorio, escuchar los audios de cada voz, reproducir pistas instrumentales y descargar partituras y archivos de audio.
 
 ---
 
@@ -13,13 +13,18 @@ APP/
 │   └── styles.css          ← Estilos de la aplicación
 ├── js/
 │   └── app.js              ← Lógica: repertorio, reproductor, descargas
-└── repetorio/              ← Carpeta con todas las canciones
-    └── Es Exaltado/        ← Ejemplo de canción
-        ├── Soprano.mp4
-        ├── Alto.mp4
-        ├── Tenor.mpeg
-        ├── Bajo.mpeg
-        └── Partitura.pdf
+└── repetorio/
+    ├── warmup/             ← Canciones de calentamiento
+    │   ├── Amen/
+    │   └── Jubilate deo/
+    └── canciones/          ← Cancionero principal
+        └── Es Exaltado/
+            ├── Soprano.mp4
+            ├── Alto.mp4
+            ├── Tenor.mpeg
+            ├── Bajo.mpeg
+            ├── Pista.mp3       (opcional: pista instrumental)
+            └── Partitura.pdf
 ```
 
 ---
@@ -28,8 +33,10 @@ APP/
 
 | Función | Descripción |
 |---------|-------------|
-| **Repertorio** | Lista de canciones. Al hacer clic se despliegan las voces disponibles. |
+| **Secciones** | El repertorio se divide en dos categorías: **Warmup** (calentamiento) y **Canciones** (cancionero). |
+| **Repertorio** | Lista de canciones en acordeón. Al hacer clic se despliegan las voces disponibles. |
 | **Reproducir** | Botón naranja (▶) que reproduce el audio de la voz seleccionada directamente en el navegador. |
+| **Pista instrumental** | Botón morado (▶) para reproducir la pista (solo música, sin voces). |
 | **Descargar audio** | Botón azul "Descargar" para guardar el archivo de audio en el dispositivo. |
 | **Ver partitura** | Botón verde (👁) que abre el PDF de la partitura en una nueva pestaña. |
 | **Descargar partitura** | Botón verde "Descargar" para guardar el PDF en el dispositivo. |
@@ -40,10 +47,10 @@ APP/
 
 ### Paso 1: Crear la carpeta
 
-Dentro de `repetorio/`, crear una carpeta con el nombre de la canción. Ejemplo:
+Dentro de `repetorio/warmup/` o `repetorio/canciones/`, crear una carpeta con el nombre de la canción:
 
 ```
-repetorio/
+repetorio/canciones/
 └── Grande Es Tu Fidelidad/
 ```
 
@@ -57,21 +64,32 @@ Dentro de esa carpeta, dejar los siguientes archivos con estos nombres exactos:
 | `Alto.mp4` | Audio de la voz Alto (Contralto) |
 | `Tenor.mpeg` | Audio de la voz Tenor |
 | `Bajo.mpeg` | Audio de la voz Bajo |
+| `Pista.mp3` | Pista instrumental (solo música, opcional) |
 | `Partitura.pdf` | Partitura de la canción |
 
 ### Paso 3: Registrar la canción en el código
 
-Abrir el archivo `js/app.js` y agregar la canción al array `repertorio`:
+Abrir el archivo `js/app.js` y agregar la canción al array correspondiente:
 
+**Para calentamiento (warmup):**
 ```js
-const repertorio = [
+const warmup = [
+    { nombre: "Amen", carpeta: "Amen" },
+    { nombre: "Nueva Canción", carpeta: "Nueva Canción" },  // ← nueva
+];
+```
+
+**Para cancionero:**
+```js
+const canciones = [
     { nombre: "Es Exaltado", carpeta: "Es Exaltado" },
     { nombre: "Grande Es Tu Fidelidad", carpeta: "Grande Es Tu Fidelidad" },  // ← nueva
 ];
 ```
 
 - **nombre**: lo que se muestra en pantalla.
-- **carpeta**: el nombre exacto de la carpeta dentro de `repetorio/`.
+- **carpeta**: el nombre exacto de la carpeta dentro de `repetorio/warmup/` o `repetorio/canciones/`.
+- **archivos**: (opcional) poner `archivos: false` si la carpeta aún no tiene archivos de voces (muestra el acordeón vacío).
 
 ---
 
