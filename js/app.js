@@ -17,8 +17,27 @@
  */
 
 const warmup = [
-    { nombre: "Amen", carpeta: "Amen", archivos: false },
-    { nombre: "Jubilate Deo", carpeta: "Jubilate deo", archivos: false },
+    {
+        nombre: "Amen",
+        carpeta: "Amen",
+        voces: [
+            { nombre: "Soprano", icono: "👩", archivo: "soprano.mp3" },
+            { nombre: "Alto",    icono: "👩", archivo: "alto.mp3" },
+            { nombre: "Tenor",   icono: "👨", archivo: "tenor.mp3" },
+            { nombre: "Bajo",    icono: "👨", archivo: "bajo.mp3" },
+        ],
+        todas: "todas.mp3",
+        pista: "pista.mp3",
+        partitura: "partitura.jpeg",
+    },
+    {
+        nombre: "Jubilate Deo",
+        carpeta: "Jubilate deo",
+        voces: [],
+        todas: "todas.mp3",
+        pista: "pista.mp3",
+        partitura: "partitura.jpeg",
+    },
 ];
 
 const canciones = [
@@ -74,7 +93,8 @@ function renderCategoria(lista, containerId, basePath) {
 
         if (cancion.archivos !== false) {
         // Voces
-        voces.forEach((voz) => {
+        const vocesLista = cancion.voces !== undefined ? cancion.voces : voces;
+        vocesLista.forEach((voz) => {
             const li = document.createElement("li");
             li.className = "voice-item";
             const rutaAudio = `${basePath}/${encodeURIComponent(cancion.carpeta)}/${encodeURIComponent(voz.archivo)}`;
@@ -116,8 +136,52 @@ function renderCategoria(lista, containerId, basePath) {
             ul.appendChild(playerRow);
         });
 
+        // Todas las voces
+        if (cancion.todas) {
+            const rutaTodas = `${basePath}/${encodeURIComponent(cancion.carpeta)}/${encodeURIComponent(cancion.todas)}`;
+            const liTodas = document.createElement("li");
+            liTodas.className = "voice-item";
+            liTodas.innerHTML = `
+                <div class="voice-info">
+                    <span class="voice-icon">🎶</span>
+                    <span class="voice-name">Todas las voces</span>
+                </div>
+                <div class="voice-actions">
+                    <button class="play-btn todas-btn" title="Reproducir Todas las voces" data-src="${rutaTodas}">
+                        &#9654;
+                    </button>
+                    <a href="${rutaTodas}" download class="download-btn" title="Descargar Todas las voces">
+                        <span class="btn-icon">&#11015;</span> Descargar
+                    </a>
+                </div>
+            `;
+
+            const todasPlayerRow = document.createElement("li");
+            todasPlayerRow.className = "audio-player-row hidden";
+            todasPlayerRow.innerHTML = `<audio controls preload="none"><source src="${rutaTodas}">Tu navegador no soporta audio.</audio>`;
+
+            const todasPlayBtn = liTodas.querySelector(".play-btn");
+            todasPlayBtn.addEventListener("click", () => {
+                const audio = todasPlayerRow.querySelector("audio");
+                const isVisible = !todasPlayerRow.classList.contains("hidden");
+                if (isVisible) {
+                    todasPlayerRow.classList.add("hidden");
+                    audio.pause();
+                    todasPlayBtn.innerHTML = "&#9654;";
+                } else {
+                    todasPlayerRow.classList.remove("hidden");
+                    audio.play();
+                    todasPlayBtn.innerHTML = "&#9209;";
+                }
+            });
+
+            ul.appendChild(liTodas);
+            ul.appendChild(todasPlayerRow);
+        }
+
         // Pista (instrumental)
-        const rutaPista = `${basePath}/${encodeURIComponent(cancion.carpeta)}/Pista.mp3`;
+        const pistaFile = cancion.pista || "Pista.mp3";
+        const rutaPista = `${basePath}/${encodeURIComponent(cancion.carpeta)}/${encodeURIComponent(pistaFile)}`;
         const liPista = document.createElement("li");
         liPista.className = "voice-item";
         liPista.innerHTML = `
@@ -159,7 +223,8 @@ function renderCategoria(lista, containerId, basePath) {
 
         // Partitura
         const liPartitura = document.createElement("li");
-        const rutaPartitura = `${basePath}/${encodeURIComponent(cancion.carpeta)}/Partitura.pdf`;
+        const partituraFile = cancion.partitura || "Partitura.pdf";
+        const rutaPartitura = `${basePath}/${encodeURIComponent(cancion.carpeta)}/${encodeURIComponent(partituraFile)}`;
         liPartitura.innerHTML = `
             <div class="voice-info">
                 <span class="voice-icon">📄</span>
