@@ -42,6 +42,19 @@ const warmup = [
 
 const canciones = [
     { nombre: "Es Exaltado", carpeta: "Es Exaltado" },
+    {
+        nombre: "Medley Alabanza Su Nombre",
+        carpeta: "Medley allabanza su Nombre",
+        voces: [
+            { nombre: "Soprano", icono: "👩", archivo: "Soprano.mp3" },
+            { nombre: "Alto",    icono: "👩", archivo: "alto.mp3" },
+            { nombre: "Tenor",   icono: "👨", archivo: "tenor.mp3" },
+            { nombre: "Bajo",    icono: "👨", archivo: "bajo.mp3" },
+        ],
+        todas: "Todo Junto.mp3",
+        pista: "pista.mp3",
+        partitura: "Partitura.pdf",
+    },
 ];
 
 const voces = [

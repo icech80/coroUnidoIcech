@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coro Unido - Asistencia</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>&#127926; Coro Unido Echaurren 80</h1>
+            <p>Control de Asistencia</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <a href="index.html">🎶 Repertorio</a>
+        <a href="asistencia.html" class="active">📋 Asistencia</a>
+        <a href="historial.html">📊 Historial</a>
+    </nav>
+
+    <!-- PIN lock overlay -->
+    <div id="pin-overlay" class="pin-overlay">
+        <div class="pin-box">
+            <h2>🔒 Acceso Restringido</h2>
+            <p>Ingresa el PIN para acceder</p>
+            <div class="pin-input-wrapper">
+                <input type="password" id="pin-input" maxlength="7" placeholder="••••••" autocomplete="off">
+                <button type="button" id="pin-toggle" class="pin-toggle" title="Mostrar/ocultar PIN">👁</button>
+            </div>
+            <button id="pin-submit" class="btn btn-primary">Entrar</button>
+            <p id="pin-error" class="pin-error hidden">PIN incorrecto</p>
+        </div>
+    </div>
+
+    <main class="hidden" id="main-content">
+        <div class="container">
+
+            <!-- Manage members -->
+            <section class="asistencia-section">
+                <h2 class="section-title">👥 Integrantes</h2>
+                <div class="add-member-row">
+                    <input type="text" id="new-member-name" placeholder="Nombre del integrante" maxlength="50">
+                    <select id="new-member-voice">
+                        <option value="Soprano">Soprano</option>
+                        <option value="Alto">Alto</option>
+                        <option value="Tenor">Tenor</option>
+                        <option value="Bajo">Bajo</option>
+                    </select>
+                    <button id="add-member-btn" class="btn btn-primary">+ Agregar</button>
+                </div>
+                <div id="members-list" class="members-list"></div>
+            </section>
+
+            <!-- Take attendance -->
+            <section class="asistencia-section">
+                <h2 class="section-title">📋 Tomar Asistencia</h2>
+                <div class="session-row">
+                    <input type="date" id="session-date">
+                    <button id="start-session-btn" class="btn btn-primary">Iniciar Sesión</button>
+                </div>
+                <div id="attendance-form" class="hidden">
+                    <h3 id="session-date-label" class="session-date-label"></h3>
+                    <div id="attendance-list" class="attendance-list"></div>
+                    <button id="save-attendance-btn" class="btn btn-save">💾 Guardar Asistencia</button>
+                </div>
+            </section>
+
+            <!-- Attendance history -->
+            <section class="asistencia-section">
+                <h2 class="section-title">📊 Historial de Asistencia</h2>
+                <div id="history-container" class="history-container"></div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>Coro Unido Echaurren 80 &copy; 2026</p>
+    </footer>
+
+    <script src="js/asistencia.js"></script>
+</body>
+</html>

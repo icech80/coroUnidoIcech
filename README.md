@@ -8,11 +8,15 @@ Aplicación web para el coro de la iglesia donde los integrantes pueden consulta
 
 ```
 APP/
-├── index.html              ← Página principal
+├── index.html              ← Página principal (repertorio)
+├── asistencia.html         ← Página de asistencia
+├── historial.html          ← Página de historial
 ├── css/
 │   └── styles.css          ← Estilos de la aplicación
 ├── js/
-│   └── app.js              ← Lógica: repertorio, reproductor, descargas
+│   ├── app.js              ← Lógica: repertorio, reproductor, descargas
+│   ├── asistencia.js       ← Lógica: registro de asistencia
+│   └── historial.js        ← Lógica: historial de asistencia
 └── repetorio/
     ├── warmup/             ← Canciones de calentamiento
     │   ├── Amen/
@@ -28,11 +32,19 @@ APP/
     │       ├── pista.mp3
     │       └── partitura.jpeg
     └── canciones/          ← Cancionero principal
-        └── Es Exaltado/
-            ├── Soprano.mp4
-            ├── Alto.mp4
-            ├── Tenor.mpeg
-            ├── Bajo.mpeg
+        ├── Es Exaltado/
+        │   ├── Soprano.mp4
+        │   ├── Alto.mp4
+        │   ├── Tenor.mpeg
+        │   ├── Bajo.mpeg
+        │   ├── pista.mp3
+        │   └── Partitura.pdf
+        └── Medley allabanza su Nombre/
+            ├── Soprano.mp3
+            ├── alto.mp3
+            ├── tenor.mp3
+            ├── bajo.mp3
+            ├── Todo Junto.mp3
             ├── pista.mp3
             └── Partitura.pdf
 ```
@@ -90,6 +102,26 @@ Abrir el archivo `js/app.js` y agregar la canción al array correspondiente:
 const canciones = [
     { nombre: "Es Exaltado", carpeta: "Es Exaltado" },
     { nombre: "Nueva Canción", carpeta: "Nueva Canción" },  // ← nueva
+];
+```
+
+**Canción con archivos personalizados (cancionero):**
+```js
+const canciones = [
+    { nombre: "Es Exaltado", carpeta: "Es Exaltado" },
+    {
+        nombre: "Medley Alabanza Su Nombre",
+        carpeta: "Medley allabanza su Nombre",
+        voces: [
+            { nombre: "Soprano", icono: "👩", archivo: "Soprano.mp3" },
+            { nombre: "Alto",    icono: "👩", archivo: "alto.mp3" },
+            { nombre: "Tenor",   icono: "👨", archivo: "tenor.mp3" },
+            { nombre: "Bajo",    icono: "👨", archivo: "bajo.mp3" },
+        ],
+        todas: "Todo Junto.mp3",
+        pista: "pista.mp3",
+        partitura: "Partitura.pdf",
+    },
 ];
 ```
 
