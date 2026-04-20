@@ -193,7 +193,7 @@ function renderCategoria(lista, containerId, basePath) {
         }
 
         // Pista (instrumental)
-        const pistaFile = cancion.pista || "Pista.mp3";
+        const pistaFile = cancion.pista || "pista.mp3";
         const rutaPista = `${basePath}/${encodeURIComponent(cancion.carpeta)}/${encodeURIComponent(pistaFile)}`;
         const liPista = document.createElement("li");
         liPista.className = "voice-item";
