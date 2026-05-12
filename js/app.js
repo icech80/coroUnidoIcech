@@ -284,4 +284,31 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
+/**
+ * Devuelve la lista de URLs (audios + partituras) de todo el repertorio.
+ * La usa sw-register.js para precachear todo offline.
+ */
+function getRepertorioUrls() {
+    const urls = [];
+
+    function recolectar(lista, basePath) {
+        lista.forEach((cancion) => {
+            if (cancion.archivos === false) return;
+            const carpeta = `${basePath}/${encodeURIComponent(cancion.carpeta)}`;
+            const vocesLista = cancion.voces !== undefined ? cancion.voces : voces;
+            vocesLista.forEach((v) => urls.push(`${carpeta}/${encodeURIComponent(v.archivo)}`));
+            if (cancion.todas) urls.push(`${carpeta}/${encodeURIComponent(cancion.todas)}`);
+            const pistaFile = cancion.pista || "pista.mp3";
+            urls.push(`${carpeta}/${encodeURIComponent(pistaFile)}`);
+            const partituraFile = cancion.partitura || "Partitura.pdf";
+            urls.push(`${carpeta}/${encodeURIComponent(partituraFile)}`);
+        });
+    }
+
+    recolectar(warmup, "repetorio/warmup");
+    recolectar(canciones, "repetorio/canciones");
+    return urls;
+}
+window.getRepertorioUrls = getRepertorioUrls;
+
 document.addEventListener("DOMContentLoaded", crearListaCanciones);

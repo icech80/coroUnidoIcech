@@ -713,3 +713,69 @@ footer {
         flex-direction: column;
     }
 }
+
+/* ============================================================
+   Soporte offline (Service Worker) — banner y botón de precarga
+   ============================================================ */
+
+.net-status-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 0.6rem 1rem;
+    background: #f59e0b;
+    color: #1f2937;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+    font-size: 0.95rem;
+}
+
+.net-status-banner.hidden {
+    display: none;
+}
+
+.offline-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1rem;
+    margin: 0 0 1.2rem;
+    padding: 0.8rem 1rem;
+    background: #ede9fe;
+    border: 1px solid #c4b5fd;
+    border-radius: 10px;
+}
+
+.precache-btn {
+    background: #7c3aed;
+    color: white;
+    border: none;
+    padding: 0.55rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
+}
+
+.precache-btn:hover:not(:disabled) {
+    background: #6d28d9;
+}
+
+.precache-btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.precache-btn:disabled {
+    background: #a78bfa;
+    cursor: progress;
+}
+
+.precache-progress {
+    color: #4c1d95;
+    font-size: 0.9rem;
+    font-weight: 500;
+}

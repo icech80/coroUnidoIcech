@@ -190,6 +190,27 @@ Luego abrir en el navegador: **http://localhost:8080**
 - HTML5
 - CSS3
 - JavaScript (vanilla, sin dependencias externas)
+- PWA con Service Worker (`sw.js`) para uso **offline**
+
+---
+
+## Modo offline (PWA)
+
+La app funciona sin internet una vez que el contenido se cacheó:
+
+- El **app shell** (HTML/CSS/JS/favicon) se precachea automáticamente al primer acceso.
+- Los **audios y partituras** se cachean a medida que se usan, o todos a la vez con el botón **"📥 Descargar todo para usar sin internet"** que aparece arriba del repertorio.
+- Si se pierde conexión, aparece un banner inferior **"📴 Sin conexión — usando contenido guardado"**.
+- El Service Worker maneja peticiones `Range` para que el reproductor `<audio>` funcione totalmente offline (incluido buscar dentro de la pista).
+
+**Importante:** el Service Worker solo se registra cuando la app se sirve por `https://` o `http://localhost`. Abrir `index.html` con doble clic (esquema `file://`) **no** activa el modo offline. Para probar localmente:
+
+```bash
+python -m http.server 8080
+# Abrir http://localhost:8080
+```
+
+**Forzar actualización:** subir el `VERSION` al inicio de `sw.js` y hacer push.
 
 ---
 
