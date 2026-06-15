@@ -39,13 +39,20 @@ APP/
         │   ├── Bajo.mpeg
         │   ├── pista.mp3
         │   └── Partitura.pdf
-        └── Medley allabanza su Nombre/
+        ├── Medley allabanza su Nombre/
+        │   ├── Soprano.mp3
+        │   ├── alto.mp3
+        │   ├── tenor.mp3
+        │   ├── bajo.mp3
+        │   ├── Todo Junto.mp3
+        │   ├── pista.mp3
+        │   └── Partitura.pdf
+        └── ven de todo bien la fuente/
             ├── Soprano.mp3
-            ├── alto.mp3
-            ├── tenor.mp3
-            ├── bajo.mp3
-            ├── Todo Junto.mp3
-            ├── pista.mp3
+            ├── Alto.mp3
+            ├── Tenor.mp3
+            ├── Bajo.mp3
+            ├── Original.mp3
             └── Partitura.pdf
 ```
 
@@ -101,7 +108,7 @@ Abrir el archivo `js/app.js` y agregar la canción al array correspondiente:
 ```js
 const canciones = [
     { nombre: "Es Exaltado", carpeta: "Es Exaltado" },
-    { nombre: "Nueva Canción", carpeta: "Nueva Canción" },  // ← nueva
+    { nombre: "Ven De Todo Bien La Fuente", carpeta: "ven de todo bien la fuente" },  // ← nueva
 ];
 ```
 

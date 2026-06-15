@@ -55,6 +55,18 @@ const canciones = [
         pista: "pista.mp3",
         partitura: "Partitura.pdf",
     },
+    {
+        nombre: "Ven De Todo Bien La Fuente",
+        carpeta: "ven de todo bien la fuente",
+        voces: [
+            { nombre: "Soprano", icono: "👩", archivo: "Soprano.mp3" },
+            { nombre: "Alto",    icono: "👩", archivo: "Alto.mp3" },
+            { nombre: "Tenor",   icono: "👨", archivo: "Tenor.mp3" },
+            { nombre: "Bajo",    icono: "👨", archivo: "Bajo.mp3" },
+        ],
+        todas: "Original.mp3",
+        partitura: "Partitura.pdf",
+    },
 ];
 
 const voces = [
