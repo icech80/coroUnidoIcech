@@ -52,7 +52,12 @@ APP/
             ├── Alto.mp3
             ├── Tenor.mp3
             ├── Bajo.mp3
-            ├── Original.mp3
+            ├── Soprano-Cantado.mp3
+            ├── Alto-Cantado.mp3
+            ├── Tenor-Cantado.mp3
+            ├── Bajo-Cantado.mp3
+            ├── Todas las voces-Cantado.mp3
+            ├── Pista.mp3
             └── Partitura.pdf
 ```
 
