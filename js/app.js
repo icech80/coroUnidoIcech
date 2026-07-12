@@ -86,6 +86,22 @@ function crearListaCanciones() {
     renderCategoria(canciones, "canciones-list", "repetorio/canciones");
 }
 
+function crearPlayerRow(rutaAudio) {
+    const playerRow = document.createElement("li");
+    playerRow.className = "audio-player-row hidden";
+    playerRow.innerHTML = `
+        <div class="audio-player-controls">
+            <button class="skip-btn skip-back" title="Retroceder 15s">&#8634; 15</button>
+            <audio controls preload="none"><source src="${rutaAudio}">Tu navegador no soporta audio.</audio>
+            <button class="skip-btn skip-fwd" title="Adelantar 15s">15 &#8635;</button>
+        </div>
+    `;
+    const audio = playerRow.querySelector("audio");
+    playerRow.querySelector(".skip-back").addEventListener("click", () => { audio.currentTime = Math.max(0, audio.currentTime - 15); });
+    playerRow.querySelector(".skip-fwd").addEventListener("click", () => { audio.currentTime = Math.min(audio.duration || Infinity, audio.currentTime + 15); });
+    return playerRow;
+}
+
 function renderCategoria(lista, containerId, basePath) {
     const container = document.getElementById(containerId);
 
@@ -143,9 +159,7 @@ function renderCategoria(lista, containerId, basePath) {
                 </div>
             `;
 
-            const playerRow = document.createElement("li");
-            playerRow.className = "audio-player-row hidden";
-            playerRow.innerHTML = `<audio controls preload="none"><source src="${rutaAudio}">Tu navegador no soporta audio.</audio>`;
+            const playerRow = crearPlayerRow(rutaAudio);
 
             const playBtn = li.querySelector(".play-btn");
             playBtn.addEventListener("click", () => {
@@ -186,9 +200,7 @@ function renderCategoria(lista, containerId, basePath) {
                 </div>
             `;
 
-            const todasPlayerRow = document.createElement("li");
-            todasPlayerRow.className = "audio-player-row hidden";
-            todasPlayerRow.innerHTML = `<audio controls preload="none"><source src="${rutaTodas}">Tu navegador no soporta audio.</audio>`;
+            const todasPlayerRow = crearPlayerRow(rutaTodas);
 
             const todasPlayBtn = liTodas.querySelector(".play-btn");
             todasPlayBtn.addEventListener("click", () => {
@@ -229,9 +241,7 @@ function renderCategoria(lista, containerId, basePath) {
             </div>
         `;
 
-        const pistaPlayerRow = document.createElement("li");
-        pistaPlayerRow.className = "audio-player-row hidden";
-        pistaPlayerRow.innerHTML = `<audio controls preload="none"><source src="${rutaPista}">Tu navegador no soporta audio.</audio>`;
+        const pistaPlayerRow = crearPlayerRow(rutaPista);
 
         const pistaPlayBtn = liPista.querySelector(".play-btn");
         pistaPlayBtn.addEventListener("click", () => {

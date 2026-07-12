@@ -221,8 +221,40 @@ a.view-btn:hover {
     border-bottom: 1px solid #e8ecf1;
 }
 
-.audio-player-row audio {
-    width: 100%;
+.audio-player-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.audio-player-controls audio {
+    flex: 1;
+    min-width: 0;
+}
+
+.skip-btn {
+    flex-shrink: 0;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 0.7rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    transition: background 0.2s;
+}
+
+.skip-btn:hover {
+    background: #ddd;
+}
+
+.skip-btn:active {
+    background: #ccc;
 }
 
 .audio-player-row.hidden {
