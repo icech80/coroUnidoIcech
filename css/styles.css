@@ -257,6 +257,13 @@ a.view-btn:hover {
     background: #ccc;
 }
 
+.skip-btn-row {
+    display: none;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 0.3rem;
+}
+
 .audio-player-row.hidden {
     display: none;
 }
@@ -738,13 +745,25 @@ footer {
     }
 
     .audio-player-controls {
-        flex-wrap: wrap;
-        justify-content: center;
+        display: block;
     }
 
     .audio-player-controls audio {
         width: 100%;
-        order: -1;
+    }
+
+    .audio-player-controls .skip-btn {
+        display: none;
+    }
+
+    .skip-btn-row {
+        display: flex;
+    }
+
+    .audio-player-controls .skip-btn-row {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
     }
 
     .skip-btn {
