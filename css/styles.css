@@ -232,6 +232,12 @@ a.view-btn:hover {
     min-width: 0;
 }
 
+.skip-buttons {
+    display: flex;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
 .skip-btn {
     flex-shrink: 0;
     background: #f0f0f0;
@@ -738,15 +744,17 @@ footer {
     }
 
     .audio-player-controls {
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
         gap: 0.5rem;
     }
 
     .audio-player-controls audio {
-        flex-basis: 100%;
         width: 100%;
-        min-height: 40px;
+    }
+
+    .skip-buttons {
+        justify-content: center;
+        gap: 1rem;
     }
 
     .skip-btn {

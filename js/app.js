@@ -91,9 +91,11 @@ function crearPlayerRow(rutaAudio) {
     playerRow.className = "audio-player-row hidden";
     playerRow.innerHTML = `
         <div class="audio-player-controls">
-            <button class="skip-btn skip-back" title="Retroceder 15s">&#8634; 15</button>
             <audio controls preload="none"><source src="${rutaAudio}">Tu navegador no soporta audio.</audio>
-            <button class="skip-btn skip-fwd" title="Adelantar 15s">15 &#8635;</button>
+            <div class="skip-buttons">
+                <button class="skip-btn skip-back" title="Retroceder 15s">&#8634; 15</button>
+                <button class="skip-btn skip-fwd" title="Adelantar 15s">15 &#8635;</button>
+            </div>
         </div>
     `;
     const audio = playerRow.querySelector("audio");
