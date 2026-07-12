@@ -749,6 +749,7 @@ footer {
 
     .audio-player-controls audio {
         width: 100%;
+        min-height: 54px;
     }
 
     .skip-buttons {
