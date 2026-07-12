@@ -737,6 +737,22 @@ footer {
         font-size: 0.8rem;
     }
 
+    .audio-player-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .audio-player-controls audio {
+        width: 100%;
+        order: -1;
+    }
+
+    .skip-btn {
+        width: 3rem;
+        height: 3rem;
+        font-size: 0.8rem;
+    }
+
     .add-member-row {
         flex-direction: column;
     }
