@@ -745,6 +745,7 @@ footer {
     .audio-player-controls {
         flex-direction: column;
         gap: 0.5rem;
+        align-items: stretch;
     }
 
     .audio-player-controls audio {
