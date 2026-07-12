@@ -70,6 +70,7 @@ APP/
 | **Secciones** | El repertorio se divide en dos categorías: **Warmup** (calentamiento) y **Canciones** (cancionero). |
 | **Repertorio** | Lista de canciones en acordeón. Al hacer clic se despliegan las voces disponibles. |
 | **Reproducir** | Botón naranja (▶) que reproduce el audio de la voz seleccionada directamente en el navegador. |
+| **Retroceder / Adelantar 15s** | Botones (⟲ 15 / 15 ⟳) junto al reproductor para saltar 15 segundos atrás o adelante. En PC aparecen a cada lado del reproductor; en celular aparecen centrados debajo. |
 | **Todas las voces** | Botón (▶) para reproducir el audio con todas las voces juntas (🎶). |
 | **Pista instrumental** | Botón morado (▶) para reproducir la pista (solo música, sin voces). |
 | **Descargar audio** | Botón azul "Descargar" para guardar el archivo de audio en el dispositivo. |
