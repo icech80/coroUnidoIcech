@@ -224,6 +224,8 @@ a.view-btn:hover {
     display: flex;
     align-items: center;
     gap: 0.4rem;
+    width: 500px;
+    max-width: 100%;
 }
 
 .audio-player-controls audio {
