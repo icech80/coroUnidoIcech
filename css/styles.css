@@ -742,13 +742,13 @@ footer {
         flex-wrap: wrap;
         justify-content: center;
         gap: 0.5rem;
-        align-items: stretch;
     }
 
     .audio-player-controls audio {
         width: 100%;
         flex-basis: 100%;
         min-height: 54px;
+        order: -1;
     }
 
     .skip-btn {
