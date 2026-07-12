@@ -95,16 +95,10 @@ function crearPlayerRow(rutaAudio) {
             <audio controls preload="none"><source src="${rutaAudio}">Tu navegador no soporta audio.</audio>
             <button class="skip-btn skip-fwd" title="Adelantar 15s">15 &#8635;</button>
         </div>
-        <div class="skip-btn-row">
-            <button class="skip-btn skip-back-mobile" title="Retroceder 15s">&#8634; 15</button>
-            <button class="skip-btn skip-fwd-mobile" title="Adelantar 15s">15 &#8635;</button>
-        </div>
     `;
     const audio = playerRow.querySelector("audio");
     playerRow.querySelector(".skip-back").addEventListener("click", () => { audio.currentTime = Math.max(0, audio.currentTime - 15); });
     playerRow.querySelector(".skip-fwd").addEventListener("click", () => { audio.currentTime = Math.min(audio.duration || Infinity, audio.currentTime + 15); });
-    playerRow.querySelector(".skip-back-mobile").addEventListener("click", () => { audio.currentTime = Math.max(0, audio.currentTime - 15); });
-    playerRow.querySelector(".skip-fwd-mobile").addEventListener("click", () => { audio.currentTime = Math.min(audio.duration || Infinity, audio.currentTime + 15); });
     return playerRow;
 }
 
