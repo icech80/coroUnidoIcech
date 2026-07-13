@@ -69,7 +69,7 @@ const canciones = [
             { nombre: "Bajo Cantado",    icono: "👨", archivo: "Bajo-Cantado.mp3" },
         ],
         todas: "Todas las voces-Cantado.mp3",
-        pista: "Pista v2.mp3",
+        pista: "Pista.mp3",
         partitura: "Partitura.pdf",
     },
     {
