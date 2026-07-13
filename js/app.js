@@ -43,6 +43,13 @@ const warmup = [
 const canciones = [
     { nombre: "Es Exaltado", carpeta: "Es Exaltado" },
     {
+        nombre: "Emanuel Dios Con Nos",
+        carpeta: "Emanuel Dios Con nos",
+        voces: [],
+        pista: "Pista.mp3",
+        archivos: true,
+    },
+    {
         nombre: "Medley Alabanza Su Nombre",
         carpeta: "Medley allabanza su Nombre",
         voces: [
