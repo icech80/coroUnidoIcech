@@ -43,13 +43,6 @@ const warmup = [
 const canciones = [
     { nombre: "Es Exaltado", carpeta: "Es Exaltado" },
     {
-        nombre: "Emanuel Dios Con Nos",
-        carpeta: "Emanuel Dios Con nos",
-        voces: [],
-        pista: "Pista.mp3",
-        archivos: true,
-    },
-    {
         nombre: "Medley Alabanza Su Nombre",
         carpeta: "Medley allabanza su Nombre",
         voces: [
@@ -76,8 +69,14 @@ const canciones = [
             { nombre: "Bajo Cantado",    icono: "👨", archivo: "Bajo-Cantado.mp3" },
         ],
         todas: "Todas las voces-Cantado.mp3",
-        pista: "Pista.mp3",
+        pista: "Pista v2.mp3",
         partitura: "Partitura.pdf",
+    },
+    {
+        nombre: "Emanuel Dios Con Nos",
+        carpeta: "Emanuel Dios Con nos",
+        voces: [],
+        pista: "Pista.mp3",
     },
 ];
 
@@ -345,4 +344,17 @@ function getRepertorioUrls() {
 }
 window.getRepertorioUrls = getRepertorioUrls;
 
-document.addEventListener("DOMContentLoaded", crearListaCanciones);
+document.addEventListener("DOMContentLoaded", () => {
+    crearListaCanciones();
+
+    const searchInput = document.getElementById("song-search");
+    if (searchInput) {
+        searchInput.addEventListener("input", () => {
+            const query = searchInput.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            document.querySelectorAll(".song-item").forEach((item) => {
+                const name = item.querySelector(".song-name").textContent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                item.style.display = name.includes(query) ? "" : "none";
+            });
+        });
+    }
+});

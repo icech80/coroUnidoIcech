@@ -71,6 +71,25 @@ main {
     color: white;
 }
 
+/* Search box */
+.search-box {
+    margin-bottom: 1.2rem;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-box input:focus {
+    border-color: #3498db;
+}
+
 .warmup-title {
     background: linear-gradient(135deg, #e67e22, #f39c12);
 }
