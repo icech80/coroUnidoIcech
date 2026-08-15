@@ -10,7 +10,7 @@
  * Para forzar actualización del SW, subir el número de versión.
  */
 
-const VERSION = "v1.0.0";
+const VERSION = "v1.0.1";
 const SHELL_CACHE = `coro-shell-${VERSION}`;
 const MEDIA_CACHE = `coro-media-${VERSION}`;
 

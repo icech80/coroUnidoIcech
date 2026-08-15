@@ -75,8 +75,15 @@ const canciones = [
     {
         nombre: "Emanuel Dios Con Nos",
         carpeta: "Emanuel Dios Con nos",
-        voces: [],
+        voces: [
+            { nombre: "Soprano", icono: "👩", archivo: "Soprano.mp3" },
+            { nombre: "Alto",    icono: "👩", archivo: "Alto.mp3" },
+            { nombre: "Tenor",   icono: "👨", archivo: "Tenor.mp3" },
+            { nombre: "Bajo",    icono: "👨", archivo: "Bajo.mp3" },
+        ],
+        todas: "Todas las voces.mp3",
         pista: "Pista.mp3",
+        partitura: "Partitura 2 sistemas.pdf",
     },
 ];
 
