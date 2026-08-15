@@ -47,18 +47,26 @@ APP/
         │   ├── Todo Junto.mp3
         │   ├── pista.mp3
         │   └── Partitura.pdf
-        └── ven de todo bien la fuente/
+        ├── ven de todo bien la fuente/
+        │   ├── Soprano.mp3
+        │   ├── Alto.mp3
+        │   ├── Tenor.mp3
+        │   ├── Bajo.mp3
+        │   ├── Soprano-Cantado.mp3
+        │   ├── Alto-Cantado.mp3
+        │   ├── Tenor-Cantado.mp3
+        │   ├── Bajo-Cantado.mp3
+        │   ├── Todas las voces-Cantado.mp3
+        │   ├── Pista.mp3
+        │   └── Partitura.pdf
+        └── Emanuel Dios Con nos/
             ├── Soprano.mp3
             ├── Alto.mp3
             ├── Tenor.mp3
             ├── Bajo.mp3
-            ├── Soprano-Cantado.mp3
-            ├── Alto-Cantado.mp3
-            ├── Tenor-Cantado.mp3
-            ├── Bajo-Cantado.mp3
-            ├── Todas las voces-Cantado.mp3
+            ├── Todas las voces.mp3
             ├── Pista.mp3
-            └── Partitura.pdf
+            └── Partitura 2 sistemas.pdf
 ```
 
 ---
@@ -232,7 +240,10 @@ python -m http.server 8080
 La app está publicada con GitHub Pages:
 
 - **Repositorio:** https://github.com/icech80/coroUnidoIcech
-- **URL pública:** https://icech80.github.io/coroUnidoIcech/
+- **Dominio personalizado (CNAME):** https://ministeriocoro.icech80.cl/ ← URL oficial a compartir
+- **URL de GitHub Pages:** https://icech80.github.io/coroUnidoIcech/ (redirige automáticamente al dominio personalizado)
+
+**HTTPS:** el certificado del dominio personalizado es emitido por Let's Encrypt y se renueva automáticamente vía GitHub Pages (`https_enforced: true`, cualquier acceso por `http://` se redirige a `https://`). Si algún usuario ve una advertencia de "sitio no seguro", suele deberse a caché de DNS/navegador desactualizada en su dispositivo, no a un problema del sitio.
 
 ### Publicar cambios
 
