@@ -83,7 +83,7 @@ const canciones = [
         ],
         todas: "Todas las voces.mp3",
         pista: "Pista.mp3",
-        partitura: "Partitura 2 sistemas.pdf",
+        partitura: "Partitura 2 sistemas V2.pdf",
     },
 ];
 
