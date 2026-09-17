@@ -59,14 +59,22 @@ APP/
         │   ├── Todas las voces-Cantado.mp3
         │   ├── Pista.mp3
         │   └── Partitura.pdf
-        └── Emanuel Dios Con nos/
+        ├── Emanuel Dios Con nos/
+        │   ├── Soprano.mp3
+        │   ├── Alto.mp3
+        │   ├── Tenor.mp3
+        │   ├── Bajo.mp3
+        │   ├── Todas las voces.mp3
+        │   ├── Pista.mp3
+        │   └── Partitura 2 sistemas V2.pdf
+        └── Gloria al nacido Rey/
             ├── Soprano.mp3
-            ├── Alto.mp3
-            ├── Tenor.mp3
-            ├── Bajo.mp3
-            ├── Todas las voces.mp3
-            ├── Pista.mp3
-            └── Partitura 2 sistemas V2.pdf
+            ├── alto.mp3
+            ├── tenor.mp3
+            ├── bajo.mp3
+            ├── todas las voces.mp3
+            ├── pista.mp3
+            └── Partitura.pdf
 ```
 
 ---

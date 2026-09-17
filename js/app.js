@@ -85,6 +85,19 @@ const canciones = [
         pista: "Pista.mp3",
         partitura: "Partitura 2 sistemas V2.pdf",
     },
+    {
+        nombre: "Gloria al Nacido Rey",
+        carpeta: "Gloria al nacido Rey",
+        voces: [
+            { nombre: "Soprano", icono: "👩", archivo: "Soprano.mp3" },
+            { nombre: "Alto",    icono: "👩", archivo: "alto.mp3" },
+            { nombre: "Tenor",   icono: "👨", archivo: "tenor.mp3" },
+            { nombre: "Bajo",    icono: "👨", archivo: "bajo.mp3" },
+        ],
+        todas: "todas las voces.mp3",
+        pista: "pista.mp3",
+        partitura: "Partitura.pdf",
+    },
 ];
 
 const voces = [
